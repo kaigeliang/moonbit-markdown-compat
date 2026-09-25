@@ -1,3 +1,15 @@
+# MoonBit Markdown Compat
+
+MoonBit Markdown 兼容性与可靠性增强：基于社区 `cmark.mbt` 的贡献型项目。
+
+这是 [moonbit-community/cmark.mbt](https://github.com/moonbit-community/cmark.mbt) 的开发 fork，保留上游提交历史和许可证。原有解析器、渲染器及测试属于上游成果。本项目的新增贡献从基线 `452c95f8369357785c5b78b03f4d990200e9ac3c` 之后计算。
+
+首个目标是复现并修复 [嵌套任务列表缩进问题 #149](https://github.com/moonbit-community/cmark.mbt/issues/149)，随后增加针对真实 README 的回归用例和跨后端验证。当前仅完成仓库初始化，修复及验证尚未完成。
+
+下方保留原项目说明。
+
+---
+
 # cmark
 
 Cmark is a [CommonMark][CommonMark specification] toolkit for the MoonBit programming language,
