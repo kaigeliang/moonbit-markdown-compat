@@ -82,7 +82,7 @@ python3 scripts/verify_targets.py --source /path/to/README.md
 
 ## 项目来源与许可证
 
-本仓库是 `moonbit-community/cmark.mbt` 的 fork。原有解析器、渲染器、CLI、语法扩展和测试来自上游；新增内容包括任务列表缩进修复、相关回归用例、真实 README 验证和跨后端示例对比。上游补丁尚未提交审阅。
+本仓库是 `moonbit-community/cmark.mbt` 的 fork。原有解析器、渲染器、CLI、语法扩展和测试来自上游；新增内容包括任务列表缩进修复、相关回归用例、真实 README 验证和跨后端示例对比。上游修复已提交为 [PR #150](https://github.com/moonbit-community/cmark.mbt/pull/150)，等待审阅，尚未合并。
 
 保留原有作者署名与 [LICENSE](LICENSE) 中的 Apache-2.0 及 cmarkit ISC 许可声明。cmark 最初是 OCaml `cmarkit` 库的 MoonBit 重写。
 
