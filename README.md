@@ -35,7 +35,7 @@ moon run --target native src/examples/library_usage
 | async README 集成验证 | 本 fork | 校验源文件哈希、26/23 checkbox 数量及六个子项层级 |
 | 跨后端与演示工具 | 本 fork | native、JS、Wasm、Wasm-GC 测试和输出对比 |
 
-上游补丁尚未提交社区审阅。
+可用 `python3 scripts/demo_task_fix.py` 查看原文和修复前后的差异；`python3 scripts/verify_targets.py --async-readme` 会重新运行跨后端和真实 README 检查。上游补丁尚未提交社区审阅。
 
 下方保留原项目说明。
 

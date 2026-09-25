@@ -4,5 +4,6 @@ _build/
 .moonagent/
 .env
 node_modules/
+/docs/
 
 target
