@@ -27,10 +27,10 @@ def main():
     if after.count('type="checkbox"') != 4 or after.count("<ul>") != 3:
         raise AssertionError("current render lost the expected child lists")
     print("Markdown source:\n" + source)
-    print("Baseline: 30629e7; current: local checkout")
+    print("Baseline: 452c95f; current: local checkout")
     print("".join(difflib.unified_diff(
         before.splitlines(keepends=True), after.splitlines(keepends=True),
-        fromfile="30629e7 HTML", tofile="current HTML",
+        fromfile="452c95f HTML", tofile="current HTML",
     )))
     print("Verification: four task nodes; two nested child lists")
 
