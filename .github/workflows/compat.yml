@@ -1,0 +1,35 @@
+name: Markdown compatibility
+
+on:
+  push:
+    branches:
+      - main
+      - codex/task-list-compat
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parser-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve module dependencies
+        run: moon update
+
+      - name: Verify parser targets and library example
+        run: python3 scripts/verify_targets.py
+
+      - name: Verify source-first baseline demo
+        run: python3 scripts/demo_task_fix.py
+
+      - name: Verify published async README
+        run: python3 scripts/check_async_readme.py
