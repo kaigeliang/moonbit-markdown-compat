@@ -28,6 +28,19 @@ def run_suite(target, package=None):
     return total
 
 
+def run_example(target):
+    command = [
+        "moon", "run", "-q", "--target", target,
+        "src/examples/library_usage",
+    ]
+    completed = subprocess.run(command, cwd=ROOT, text=True, capture_output=True)
+    if completed.returncode:
+        raise RuntimeError(
+            f"{target} library example failed:\n{completed.stderr[-2000:]}"
+        )
+    return completed.stdout
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -53,6 +66,12 @@ def main():
         raise RuntimeError(f"unexpected target coverage difference: {totals}")
     for target, total in totals.items():
         print(f"{target:7} {total}/{total} passed; renderer {renderer[target]}/{renderer[target]}")
+    outputs = {target: run_example(target) for target in TARGETS}
+    if len(set(outputs.values())) != 1:
+        raise RuntimeError("library example HTML differs across backends")
+    if outputs["native"].count('type="checkbox"') != 2 or outputs["native"].count("<ul>") != 2:
+        raise RuntimeError("library example lost nested task structure")
+    print("library example: identical nested-task XHTML on all four targets")
     if args.async_readme or args.source:
         command = [sys.executable, str(ROOT / "scripts/check_async_readme.py")]
         if args.source:
