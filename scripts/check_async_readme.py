@@ -61,15 +61,23 @@ def own_label(node):
     return node.text + "".join(own_label(child) for child in node.children)
 
 
+def own_checkboxes(node):
+    """Checkboxes in this item, excluding those owned by nested items."""
+    if node.tag in {"ul", "ol"}:
+        return []
+    found = [node] if node.tag == "input" and node.attrs.get("type") == "checkbox" else []
+    for child in node.children:
+        found.extend(own_checkboxes(child))
+    return found
+
+
 def task_items(tree):
     result = {}
     for item in descendants(tree.root, "li"):
         label = " ".join(own_label(item).split())
         if not label:
             continue
-        inputs = list(descendants(item, "input"))
-        own_input = next((i for i in inputs if i.attrs.get("type") == "checkbox"), None)
-        if own_input:
+        if own_checkboxes(item):
             result[label] = item
     return result
 
@@ -100,25 +108,28 @@ def check(readme):
 
     tasks = task_items(tree)
     parent_children = {
-        "signal handling": [
-            "graceful cancellation on receiving SIGINT etc.",
-            "custom signal handling logic",
-        ],
-        "Javascript backend": [
-            "integration with JavaScript promise and Web API ReadableStream",
-            "all IO-independent API, including:",
-            "HTTP Client API support in @http using fetch API",
-            "implement other IO primitives in JavaScript using Node.js",
-        ],
+        "signal handling": {
+            "graceful cancellation on receiving SIGINT etc.": True,
+            "custom signal handling logic": False,
+        },
+        "Javascript backend": {
+            "integration with JavaScript promise and Web API ReadableStream": True,
+            "all IO-independent API, including:": True,
+            "HTTP Client API support in @http using fetch API": True,
+            "implement other IO primitives in JavaScript using Node.js": False,
+        },
     }
-    for parent, labels in parent_children.items():
+    for parent, children in parent_children.items():
         item = tasks.get(parent)
         if item is None:
             raise AssertionError(f"missing parent task: {parent}")
-        nested = {" ".join(own_label(li).split()) for li in descendants(item, "li")}
-        for label in labels:
+        nested = {" ".join(own_label(li).split()): li for li in descendants(item, "li")}
+        for label, expected_checked in children.items():
             if label not in nested:
                 raise AssertionError(f"{label!r} is not nested under {parent!r}")
+            checkboxes = own_checkboxes(nested[label])
+            if len(checkboxes) != 1 or ("checked" in checkboxes[0].attrs) != expected_checked:
+                raise AssertionError(f"{label!r} has wrong checkbox state")
 
     strict = Tree()
     strict.feed(render(text, relaxed=False))
