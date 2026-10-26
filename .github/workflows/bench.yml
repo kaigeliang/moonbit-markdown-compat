@@ -32,6 +32,7 @@ jobs:
         env:
           MOONC_INTERNAL_PARAMS: "allocator = tlsf-mbt |"
         run: |
+          set -euo pipefail
           moon update
           cd cmarkwrap
           for t in js wasm wasm-gc native; do
