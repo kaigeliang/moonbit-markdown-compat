@@ -60,7 +60,7 @@ test "buffer_add_pct_encoded_string with ampersand" {
 }
 
 ///|
-fn wb_string_of_code_units(units : Array[Int]) -> String {
+fn wb_string_of_code_units(units : Array[Int32]) -> String {
   let b = StringBuilder::new()
   for u in units {
     b.write_char(u.unsafe_to_char())

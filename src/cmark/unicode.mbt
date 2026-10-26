@@ -40,7 +40,7 @@ pub fn is_punctuation(c : Char) -> Bool {
 
 ///|
 #cfg(target="js")
-extern "js" fn is_whitespace_ffi(code : Int) -> Bool =
+extern "js" fn is_whitespace_ffi(code : Int32) -> Bool =
   #|(code) => {
   #|  const char = String.fromCodePoint(code);
   #|  // Match Unicode whitespace using JS regex
@@ -49,7 +49,7 @@ extern "js" fn is_whitespace_ffi(code : Int) -> Bool =
 
 ///|
 #cfg(target="js")
-extern "js" fn is_punctuation_ffi(code : Int) -> Bool =
+extern "js" fn is_punctuation_ffi(code : Int32) -> Bool =
   #|(code) => {
   #|  const char = String.fromCodePoint(code);
   #|  // Match Unicode punctuation categories (Pc, Pd, Pe, Pf, Pi, Po, Ps)
