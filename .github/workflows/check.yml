@@ -22,7 +22,6 @@ jobs:
           - name: windows-latest
 
     runs-on: ${{ matrix.os.name }}
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -95,7 +94,6 @@ jobs:
 
   coverage-check:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 

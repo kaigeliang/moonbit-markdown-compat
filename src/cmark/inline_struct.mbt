@@ -32,7 +32,7 @@ priv struct TokenStart {
 ///|
 priv struct TokenBackticks {
   start : CharCodePos
-  count : Int
+  count : Int32
   escaped : Bool
 } derive(Debug)
 
@@ -40,7 +40,7 @@ priv struct TokenBackticks {
 priv struct TokenEmphasisMarks {
   start : CharCodePos
   char : Char
-  count : Int
+  count : Int32
   may_open : Bool
   may_close : Bool
 } derive(Debug)
@@ -77,7 +77,7 @@ priv struct TokenStrikethroughMarks {
 ///|
 priv struct TokenMathSpanMarks {
   start : CharCodePos
-  count : Int
+  count : Int32
   may_open : Bool
   may_close : Bool
 } derive(Debug)
@@ -100,19 +100,19 @@ fn Token::start(self : Token) -> CharCodePos {
 ///|
 fn CloserIndex::has_backticks(
   self : CloserIndex,
-  count~ : Int,
-  after~ : Int,
+  count~ : Int32,
+  after~ : Int32,
 ) -> Bool {
   self.exists(Backticks(count), after~)
 }
 
 ///|
-fn CloserIndex::has_right_brack(self : CloserIndex, after~ : Int) -> Bool {
+fn CloserIndex::has_right_brack(self : CloserIndex, after~ : Int32) -> Bool {
   self.exists(RightBrack, after~)
 }
 
 ///|
-fn CloserIndex::has_right_paren(self : CloserIndex, after~ : Int) -> Bool {
+fn CloserIndex::has_right_paren(self : CloserIndex, after~ : Int32) -> Bool {
   self.exists(RightParen, after~)
 }
 
@@ -120,8 +120,8 @@ fn CloserIndex::has_right_paren(self : CloserIndex, after~ : Int) -> Bool {
 fn CloserIndex::emphasis_pos(
   self : CloserIndex,
   char~ : Char,
-  after~ : Int,
-) -> Int? {
+  after~ : Int32,
+) -> Int32? {
   self.pos(EmphasisMarks(char), after~)
 }
 
@@ -129,28 +129,28 @@ fn CloserIndex::emphasis_pos(
 fn CloserIndex::has_emphasis(
   self : CloserIndex,
   char~ : Char,
-  after~ : Int,
+  after~ : Int32,
 ) -> Bool {
   self.exists(EmphasisMarks(char), after~)
 }
 
 ///|
-fn CloserIndex::has_strikethrough(self : CloserIndex, after~ : Int) -> Bool {
+fn CloserIndex::has_strikethrough(self : CloserIndex, after~ : Int32) -> Bool {
   self.exists(StrikethroughMarks, after~)
 }
 
 ///|
 fn CloserIndex::has_math_span(
   self : CloserIndex,
-  count~ : Int,
-  after~ : Int,
+  count~ : Int32,
+  after~ : Int32,
 ) -> Bool {
   self.exists(MathSpanMarks(count), after~)
 }
 
 ///|
 /// Used to make the text delimitation precise for nested inlines.
-fn tokens_shorten_last_line(to_last~ : Int, toks : Tokens) -> Unit {
+fn tokens_shorten_last_line(to_last~ : Int32, toks : Tokens) -> Unit {
   let last = to_last
   for i = toks.0.length() - 1; i >= 0; i = i - 1 {
     match toks.0[i] {
@@ -178,7 +178,7 @@ fn tokens_drop_stop_after_right_brack(rev_toks : RevTokens) -> Unit {
 }
 
 ///|
-fn tokens_pop_until(start~ : Int, rev_toks : RevTokens) -> Unit {
+fn tokens_pop_until(start~ : Int32, rev_toks : RevTokens) -> Unit {
   for ;; {
     guard rev_toks.pop() is Some(t) else { break }
     if t.start() < start {
@@ -232,8 +232,8 @@ fn tokens_add_backtick(
   s : String,
   line : LineSpan,
   prev_bslash~ : Bool,
-  start~ : Int,
-) -> Int {
+  start~ : Int32,
+) -> Int32 {
   let last = @cmark_base.run_of(char='`', s, last=line.last, start=start + 1)
   let count = last - start + 1
   toks.push(Backticks({ start, count, escaped: prev_bslash, }))
@@ -246,8 +246,8 @@ fn tokens_try_add_image_link_start(
   toks : Tokens,
   s : String,
   line : LineSpan,
-  start~ : Int,
-) -> Int {
+  start~ : Int32,
+) -> Int32 {
   let next = start + 1
   guard next <= line.last && s[next] == '[' else { next }
   toks.push(LinkStart({ start, image: true, }))
@@ -260,8 +260,8 @@ fn tokens_try_add_emphasis(
   cidx : CloserIndex,
   s : String,
   line : LineSpan,
-  start~ : Int,
-) -> Int {
+  start~ : Int32,
+) -> Int32 {
   let { first, last, .. } = line
   let char = s[start].unsafe_to_char()
   let run_last = @cmark_base.run_of(char~, last~, s, start=start + 1)
@@ -296,8 +296,8 @@ fn tokens_try_add_strikethrough_marks(
   cidx : CloserIndex,
   s : String,
   line : LineSpan,
-  start~ : Int,
-) -> Int {
+  start~ : Int32,
+) -> Int32 {
   let { first, last, .. } = line
   let char = s[start].unsafe_to_char()
   let run_last = @cmark_base.run_of(char~, s, last~, start=start + 1)
@@ -321,8 +321,8 @@ fn tokens_try_add_math_span_marks(
   cidx : CloserIndex,
   s : String,
   line : LineSpan,
-  start~ : Int,
-) -> Int {
+  start~ : Int32,
+) -> Int32 {
   let { first, last, .. } = line
   let char = s[start].unsafe_to_char()
   let run_last = @cmark_base.run_of(char~, s, last~, start=start + 1)
@@ -425,7 +425,7 @@ fn tokenize(
 fn Parser::break_inline(
   self : Parser,
   line : LineSpan,
-  start~ : Int,
+  start~ : Int32,
   break_ty~ : InlineBreakType,
   newline~ : LineSpan,
 ) -> Inline {
@@ -444,8 +444,8 @@ fn Parser::break_inline(
 fn Parser::try_add_text_inline(
   self : Parser,
   line : LineSpan,
-  first~ : Int,
-  last~ : Int,
+  first~ : Int32,
+  last~ : Int32,
   acc : Array[Inline],
 ) -> Unit {
   if first > last {
@@ -484,7 +484,7 @@ fn Parser::inlines_inline(
 ///|
 fn Parser::code_span_token(
   self : Parser,
-  count~ : Int,
+  count~ : Int32,
   first~ : CharCodePos,
   last~ : CharCodePos,
   first_line~ : LineSpan,
@@ -502,8 +502,8 @@ fn Parser::code_span_token(
 fn Parser::autolink_token(
   self : Parser,
   line : LineSpan,
-  first~ : Int,
-  last~ : Int,
+  first~ : Int32,
+  last~ : Int32,
   is_email~ : Bool,
 ) -> Token {
   let meta = self.meta(self.text_loc_of_span({ ..line, first, last, }))
@@ -516,8 +516,8 @@ fn Parser::autolink_token(
 ///|
 fn Parser::raw_html_token(
   self : Parser,
-  first~ : Int,
-  last~ : Int,
+  first~ : Int32,
+  last~ : Int32,
   first_line~ : LineSpan,
   last_line~ : LineSpan,
   spans : ArrayView[Span],
@@ -536,8 +536,8 @@ fn Parser::raw_html_token(
 ///|
 fn Parser::link_token(
   self : Parser,
-  first~ : Int,
-  last~ : Int,
+  first~ : Int32,
+  last~ : Int32,
   first_line~ : LineSpan,
   last_line~ : LineSpan,
   image~ : Bool,
@@ -552,8 +552,8 @@ fn Parser::link_token(
 ///|
 fn Parser::emphasis_token(
   self : Parser,
-  first~ : Int,
-  last~ : Int,
+  first~ : Int32,
+  last~ : Int32,
   first_line~ : LineSpan,
   last_line~ : LineSpan,
   strong~ : Bool,
@@ -569,8 +569,8 @@ fn Parser::emphasis_token(
 ///|
 fn Parser::ext_strikethough_token(
   self : Parser,
-  first~ : Int,
-  last~ : Int,
+  first~ : Int32,
+  last~ : Int32,
   first_line~ : LineSpan,
   last_line~ : LineSpan,
   s : Inline,
@@ -583,9 +583,9 @@ fn Parser::ext_strikethough_token(
 ///|
 fn Parser::ext_math_span_token(
   self : Parser,
-  count~ : Int,
-  first~ : Int,
-  last~ : Int,
+  count~ : Int32,
+  first~ : Int32,
+  last~ : Int32,
   first_line~ : LineSpan,
   last_line~ : LineSpan,
   spans : ArrayView[Span],
@@ -609,7 +609,7 @@ fn Parser::try_code(
   rev_toks : Ref[RevTokens],
   start_line : LineSpan,
   start~ : CharCodePos,
-  count~ : Int,
+  count~ : Int32,
   escaped~ : Bool,
 ) -> (LineSpan, Token)? {
   let cstart = start
@@ -660,7 +660,7 @@ fn Parser::try_math_span(
   rev_toks : Ref[RevTokens],
   start_line : LineSpan,
   start~ : CharCodePos,
-  count~ : Int,
+  count~ : Int32,
 ) -> (LineSpan, Token)? {
   let cstart = start
   guard self.cidx.has_math_span(count~, after=cstart) else { None }
@@ -1200,7 +1200,7 @@ fn Parser::find_emphasis_text(
   rev_toks : Ref[RevTokens],
   line : LineSpan,
   opener~ : TokenEmphasisMarks,
-) -> (LineSpan, Int, Tokens, TokenEmphasisMarks)? {
+) -> (LineSpan, Int32, Tokens, TokenEmphasisMarks)? {
   fn marks_match(marks : TokenEmphasisMarks, opener : TokenEmphasisMarks) {
     opener.char == marks.char &&
     (
