@@ -2068,11 +2068,54 @@ test "should parse links/images/refs" {
       #|                        angled_dest: false,
       #|                        before_dest: Seq(
       #|                          [
-      #|                            { v: "", meta: { id: 0, loc: ..., extra: None } },
-      #|                            { v: "  ", meta: { id: 0, loc: ..., extra: None } },
+      #|                            {
+      #|                              v: "",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
+      #|                            {
+      #|                              v: "  ",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
       #|                          ],
       #|                        ),
-      #|                        after_dest: Seq([{ v: "    ", meta: { id: 0, loc: ..., extra: None } }]),
+      #|                        after_dest: Seq(
+      #|                          [
+      #|                            {
+      #|                              v: "    ",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
+      #|                          ],
+      #|                        ),
       #|                        title_open_delim: '(',
       #|                        after_title: Seq([]),
       #|                      },
@@ -2097,8 +2140,40 @@ test "should parse links/images/refs" {
       #|                      title: Some(
       #|                        Seq(
       #|                          [
-      #|                            { blanks: "", node: { v: "The", meta: ... } },
-      #|                            { blanks: "", node: { v: "multiline title", meta: ... } },
+      #|                            {
+      #|                              blanks: "",
+      #|                              node: {
+      #|                                v: "The",
+      #|                                meta: {
+      #|                                  id: 0,
+      #|                                  loc: {
+      #|                                    file: "-",
+      #|                                    first_ccode: -1,
+      #|                                    last_ccode: -1,
+      #|                                    first_line: LinePos(-1, -1),
+      #|                                    last_line: LinePos(-1, -1),
+      #|                                  },
+      #|                                  extra: None,
+      #|                                },
+      #|                              },
+      #|                            },
+      #|                            {
+      #|                              blanks: "",
+      #|                              node: {
+      #|                                v: "multiline title",
+      #|                                meta: {
+      #|                                  id: 0,
+      #|                                  loc: {
+      #|                                    file: "-",
+      #|                                    first_ccode: -1,
+      #|                                    last_ccode: -1,
+      #|                                    first_line: LinePos(-1, -1),
+      #|                                    last_line: LinePos(-1, -1),
+      #|                                  },
+      #|                                  extra: None,
+      #|                                },
+      #|                              },
+      #|                            },
       #|                          ],
       #|                        ),
       #|                      ),
@@ -2921,15 +2996,33 @@ test "should parse strikethroughs" {
       #|                      [
       #|                        Emphasis(
       #|                          {
-      #|                            v: { delim: '*', inline: Text(...) },
+      #|                            v: {
+      #|                              delim: '*',
+      #|                              inline: Text(
+      #|                                {
+      #|                                  v: "emph2",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2944,8 +3037,8 @@ test "should parse strikethroughs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2953,15 +3046,32 @@ test "should parse strikethroughs" {
       #|                        ),
       #|                        ExtStrikethrough(
       #|                          {
-      #|                            v: InlineStrikethrough(Text(...)),
+      #|                            v: InlineStrikethrough(
+      #|                              Text(
+      #|                                {
+      #|                                  v: "stroke",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                            ),
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2976,8 +3086,8 @@ test "should parse strikethroughs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2985,15 +3095,138 @@ test "should parse strikethroughs" {
       #|                        ),
       #|                        Emphasis(
       #|                          {
-      #|                            v: { delim: '*', inline: Inlines(...) },
+      #|                            v: {
+      #|                              delim: '*',
+      #|                              inline: Inlines(
+      #|                                {
+      #|                                  v: Seq(
+      #|                                    [
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: "emph3 ",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      StrongEmphasis(
+      #|                                        {
+      #|                                          v: {
+      #|                                            delim: '*',
+      #|                                            inline: Inlines(
+      #|                                              {
+      #|                                                v: Seq(
+      #|                                                  [
+      #|                                                    Text(
+      #|                                                      {
+      #|                                                        v: "emph4  ",
+      #|                                                        meta: {
+      #|                                                          id: 0,
+      #|                                                          loc: {
+      #|                                                            file: "-",
+      #|                                                            first_ccode: -1,
+      #|                                                            last_ccode: -1,
+      #|                                                            first_line: LinePos(-1, -1),
+      #|                                                            last_line: LinePos(-1, -1),
+      #|                                                          },
+      #|                                                          extra: None,
+      #|                                                        },
+      #|                                                      },
+      #|                                                    ),
+      #|                                                    ExtStrikethrough(
+      #|                                                      {
+      #|                                                        v: InlineStrikethrough(
+      #|                                                          Text(
+      #|                                                            {
+      #|                                                              v: "strikeagain",
+      #|                                                              meta: {
+      #|                                                                id: 0,
+      #|                                                                loc: {
+      #|                                                                  file: "-",
+      #|                                                                  first_ccode: -1,
+      #|                                                                  last_ccode: -1,
+      #|                                                                  first_line: LinePos(-1, -1),
+      #|                                                                  last_line: LinePos(-1, -1),
+      #|                                                                },
+      #|                                                                extra: None,
+      #|                                                              },
+      #|                                                            },
+      #|                                                          ),
+      #|                                                        ),
+      #|                                                        meta: {
+      #|                                                          id: 0,
+      #|                                                          loc: {
+      #|                                                            file: "-",
+      #|                                                            first_ccode: -1,
+      #|                                                            last_ccode: -1,
+      #|                                                            first_line: LinePos(-1, -1),
+      #|                                                            last_line: LinePos(-1, -1),
+      #|                                                          },
+      #|                                                          extra: None,
+      #|                                                        },
+      #|                                                      },
+      #|                                                    ),
+      #|                                                  ],
+      #|                                                ),
+      #|                                                meta: {
+      #|                                                  id: 0,
+      #|                                                  loc: {
+      #|                                                    file: "-",
+      #|                                                    first_ccode: -1,
+      #|                                                    last_ccode: -1,
+      #|                                                    first_line: LinePos(-1, -1),
+      #|                                                    last_line: LinePos(-1, -1),
+      #|                                                  },
+      #|                                                  extra: None,
+      #|                                                },
+      #|                                              },
+      #|                                            ),
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                    ],
+      #|                                  ),
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
