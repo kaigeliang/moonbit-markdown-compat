@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793035313817,
+  "lastUpdate": 1795134999771,
   "repoUrl": "https://github.com/kaigeliang/moonbit-markdown-compat",
   "entries": {
     "Benchmark.js Benchmark": [
@@ -14070,6 +14070,86 @@ window.BENCHMARK_DATA = {
             "name": "cmarkNative(spec * 200)",
             "value": 0.72,
             "range": "±10.43%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "liangkaigee@gmail.com",
+            "name": "Kaige Liang",
+            "username": "kaigeliang"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d28c42cc776d8e2a39a719795e4711ba64595229",
+          "message": "Restore CI compatibility with November MoonBit toolchains (#2)\n\n* Restore CI compatibility with November MoonBit toolchains\n\n* Refresh debug snapshots for the current MoonBit printer\n\n* Update async dependency for native MoonBit builds\n\n---------\n\nCo-authored-by: kaigeliang <kaigeliang@kaigeliangdeMacBook-Air.local>",
+          "timestamp": "2026-11-20T08:34:31+08:00",
+          "tree_id": "3fb9e2eb0163a95a119762bed24af4f10a1f216f",
+          "url": "https://github.com/kaigeliang/moonbit-markdown-compat/commit/d28c42cc776d8e2a39a719795e4711ba64595229"
+        },
+        "date": 1795134999081,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "cmarkJS(spec * 100)",
+            "value": 0.7,
+            "range": "±20.04%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkJS(spec * 200)",
+            "value": 0.37,
+            "range": "±46.80%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkWASM1(spec * 100)",
+            "value": 0.86,
+            "range": "±2.27%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkWASM1(spec * 200)",
+            "value": 0.43,
+            "range": "±6.32%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkWASM(spec * 100)",
+            "value": 0.92,
+            "range": "±5.14%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkWASM(spec * 200)",
+            "value": 0.42,
+            "range": "±9.27%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkNative(spec * 100)",
+            "value": 1.17,
+            "range": "±4.94%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          },
+          {
+            "name": "cmarkNative(spec * 200)",
+            "value": 0.56,
+            "range": "±1.70%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
