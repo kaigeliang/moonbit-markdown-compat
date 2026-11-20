@@ -309,7 +309,20 @@ test "inline code and math" {
       #|                        [
       #|                          {
       #|                            blanks: "",
-      #|                            node: { v: "E = mc^2", meta: { id: 0, loc: ..., extra: None } },
+      #|                            node: {
+      #|                              v: "E = mc^2",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
       #|                          },
       #|                        ],
       #|                      ),
@@ -351,7 +364,20 @@ test "inline code and math" {
       #|                        [
       #|                          {
       #|                            blanks: "",
-      #|                            node: { v: "E = m * (c ** 2)", meta: { id: 0, loc: ..., extra: None } },
+      #|                            node: {
+      #|                              v: "E = m * (c ** 2)",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
       #|                          },
       #|                        ],
       #|                      ),
@@ -579,15 +605,34 @@ test "lists" {
       #|                      [
       #|                        Paragraph(
       #|                          {
-      #|                            v: { leading_indent: 0, inline: Text(...), trailing_blanks: "" },
+      #|                            v: {
+      #|                              leading_indent: 0,
+      #|                              inline: Text(
+      #|                                {
+      #|                                  v: "Second item",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              trailing_blanks: "",
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -595,15 +640,89 @@ test "lists" {
       #|                        ),
       #|                        List(
       #|                          {
-      #|                            v: { ty: Ordered(1, '.'), tight: true, items: Seq(...) },
+      #|                            v: {
+      #|                              ty: Ordered(1, '.'),
+      #|                              tight: true,
+      #|                              items: Seq(
+      #|                                [
+      #|                                  {
+      #|                                    v: {
+      #|                                      before_marker: 0,
+      #|                                      marker: {
+      #|                                        v: "1.",
+      #|                                        meta: {
+      #|                                          id: 0,
+      #|                                          loc: {
+      #|                                            file: "-",
+      #|                                            first_ccode: -1,
+      #|                                            last_ccode: -1,
+      #|                                            first_line: LinePos(-1, -1),
+      #|                                            last_line: LinePos(-1, -1),
+      #|                                          },
+      #|                                          extra: None,
+      #|                                        },
+      #|                                      },
+      #|                                      after_marker: 1,
+      #|                                      block: Paragraph(
+      #|                                        {
+      #|                                          v: {
+      #|                                            leading_indent: 0,
+      #|                                            inline: Text(
+      #|                                              {
+      #|                                                v: "Nested item",
+      #|                                                meta: {
+      #|                                                  id: 0,
+      #|                                                  loc: {
+      #|                                                    file: "-",
+      #|                                                    first_ccode: -1,
+      #|                                                    last_ccode: -1,
+      #|                                                    first_line: LinePos(-1, -1),
+      #|                                                    last_line: LinePos(-1, -1),
+      #|                                                  },
+      #|                                                  extra: None,
+      #|                                                },
+      #|                                              },
+      #|                                            ),
+      #|                                            trailing_blanks: "",
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      ext_task_marker: None,
+      #|                                    },
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                ],
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -837,8 +956,8 @@ test "tables" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -856,8 +975,8 @@ test "tables" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -947,8 +1066,8 @@ test "tables" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -966,8 +1085,8 @@ test "tables" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1051,8 +1170,8 @@ test "footnotes" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1060,15 +1179,105 @@ test "footnotes" {
       #|                        ),
       #|                        Link(
       #|                          {
-      #|                            v: { text: Text(...), reference: Ref(Shortcut, ..., ...) },
+      #|                            v: {
+      #|                              text: Text(
+      #|                                {
+      #|                                  v: "^1",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              reference: Ref(
+      #|                                Shortcut,
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "^1",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "^1",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "^1",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "^1",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1185,8 +1394,8 @@ test "footnotes" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },

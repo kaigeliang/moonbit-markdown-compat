@@ -6,11 +6,12 @@
 /// [link reference definitions](https://spec.commonmark.org/0.30/#link-reference-definitions),
 /// [footnote definitions](#footnote-definitions) and your own
 /// [interpretations](#resolvers).
+#derive(Debug)
 pub(all) struct Label {
   meta : Meta
   key : LabelKey
   text : Seq[Tight]
-} derive(Debug)
+}
 
 ///|
 /// The type for label keys. These are
@@ -43,10 +44,11 @@ pub fn Label::compare(self : Label, other : Label) -> Int32 {
 }
 
 ///|
+#derive(Debug)
 pub(all) enum LabelDef {
   LinkDef(Node[LinkDefinition])
   FootnoteDef(Node[Footnote])
-} derive(Debug)
+}
 
 ///|
 pub type LabelDefs = Map[LabelKey, LabelDef]

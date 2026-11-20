@@ -158,8 +158,8 @@ test "complex ref definitions" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -167,15 +167,105 @@ test "complex ref definitions" {
       #|                        ),
       #|                        Link(
       #|                          {
-      #|                            v: { text: Text(...), reference: Ref(Collapsed, ..., ...) },
+      #|                            v: {
+      #|                              text: Text(
+      #|                                {
+      #|                                  v: "c    d",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              reference: Ref(
+      #|                                Collapsed,
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "c d",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "c    d",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "c d",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "c d",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -221,10 +311,61 @@ test "complex ref definitions" {
       #|                      layout: {
       #|                        indent: 0,
       #|                        angled_dest: false,
-      #|                        before_dest: Seq([{ v: " ", meta: { id: 0, loc: ..., extra: None } }]),
-      #|                        after_dest: Seq([{ v: " ", meta: { id: 0, loc: ..., extra: None } }]),
+      #|                        before_dest: Seq(
+      #|                          [
+      #|                            {
+      #|                              v: " ",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
+      #|                          ],
+      #|                        ),
+      #|                        after_dest: Seq(
+      #|                          [
+      #|                            {
+      #|                              v: " ",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
+      #|                          ],
+      #|                        ),
       #|                        title_open_delim: '"',
-      #|                        after_title: Seq([{ v: "", meta: { id: 0, loc: ..., extra: None } }]),
+      #|                        after_title: Seq(
+      #|                          [
+      #|                            {
+      #|                              v: "",
+      #|                              meta: {
+      #|                                id: 0,
+      #|                                loc: {
+      #|                                  file: "-",
+      #|                                  first_ccode: -1,
+      #|                                  last_ccode: -1,
+      #|                                  first_line: LinePos(-1, -1),
+      #|                                  last_line: LinePos(-1, -1),
+      #|                                },
+      #|                                extra: None,
+      #|                              },
+      #|                            },
+      #|                          ],
+      #|                        ),
       #|                      },
       #|                      label: Some(
       #|                        {
@@ -240,7 +381,27 @@ test "complex ref definitions" {
       #|                            extra: None,
       #|                          },
       #|                          key: "c d",
-      #|                          text: Seq([{ blanks: "", node: ... }]),
+      #|                          text: Seq(
+      #|                            [
+      #|                              {
+      #|                                blanks: "",
+      #|                                node: {
+      #|                                  v: "c d",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              },
+      #|                            ],
+      #|                          ),
       #|                        },
       #|                      ),
       #|                      defined_label: Some(
@@ -257,7 +418,27 @@ test "complex ref definitions" {
       #|                            extra: None,
       #|                          },
       #|                          key: "c d",
-      #|                          text: Seq([{ blanks: "", node: ... }]),
+      #|                          text: Seq(
+      #|                            [
+      #|                              {
+      #|                                blanks: "",
+      #|                                node: {
+      #|                                  v: "c d",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              },
+      #|                            ],
+      #|                          ),
       #|                        },
       #|                      ),
       #|                      dest: Some(
@@ -279,8 +460,40 @@ test "complex ref definitions" {
       #|                      title: Some(
       #|                        Seq(
       #|                          [
-      #|                            { blanks: "", node: { v: "Multi", meta: ... } },
-      #|                            { blanks: "", node: { v: "line titles", meta: ... } },
+      #|                            {
+      #|                              blanks: "",
+      #|                              node: {
+      #|                                v: "Multi",
+      #|                                meta: {
+      #|                                  id: 0,
+      #|                                  loc: {
+      #|                                    file: "-",
+      #|                                    first_ccode: -1,
+      #|                                    last_ccode: -1,
+      #|                                    first_line: LinePos(-1, -1),
+      #|                                    last_line: LinePos(-1, -1),
+      #|                                  },
+      #|                                  extra: None,
+      #|                                },
+      #|                              },
+      #|                            },
+      #|                            {
+      #|                              blanks: "",
+      #|                              node: {
+      #|                                v: "line titles",
+      #|                                meta: {
+      #|                                  id: 0,
+      #|                                  loc: {
+      #|                                    file: "-",
+      #|                                    first_ccode: -1,
+      #|                                    last_ccode: -1,
+      #|                                    first_line: LinePos(-1, -1),
+      #|                                    last_line: LinePos(-1, -1),
+      #|                                  },
+      #|                                  extra: None,
+      #|                                },
+      #|                              },
+      #|                            },
       #|                          ],
       #|                        ),
       #|                      ),
@@ -1196,8 +1409,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1205,15 +1418,105 @@ test "should parse link refs" {
       #|                        ),
       #|                        Link(
       #|                          {
-      #|                            v: { text: Text(...), reference: Ref(Shortcut, ..., ...) },
+      #|                            v: {
+      #|                              text: Text(
+      #|                                {
+      #|                                  v: "Extism PDK",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              reference: Ref(
+      #|                                Shortcut,
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "extism pdk",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "Extism PDK",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "extism pdk",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "Extism PDK",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1228,8 +1531,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1237,15 +1540,105 @@ test "should parse link refs" {
       #|                        ),
       #|                        Link(
       #|                          {
-      #|                            v: { text: Text(...), reference: Ref(Shortcut, ..., ...) },
+      #|                            v: {
+      #|                              text: Text(
+      #|                                {
+      #|                                  v: "Extism Plug-ins",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              reference: Ref(
+      #|                                Shortcut,
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "extism plug-ins",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "Extism Plug-ins",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                                {
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                  key: "extism plug-ins",
+      #|                                  text: Seq(
+      #|                                    [
+      #|                                      {
+      #|                                        blanks: "",
+      #|                                        node: {
+      #|                                          v: "Extism Plug-ins",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      },
+      #|                                    ],
+      #|                                  ),
+      #|                                },
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1260,8 +1653,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1367,8 +1760,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1404,8 +1797,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1500,8 +1893,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -1537,8 +1930,8 @@ test "should parse link refs" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2108,15 +2501,34 @@ test "should parse quoted bullets" {
       #|                      [
       #|                        Paragraph(
       #|                          {
-      #|                            v: { leading_indent: 0, inline: Text(...), trailing_blanks: "" },
+      #|                            v: {
+      #|                              leading_indent: 0,
+      #|                              inline: Text(
+      #|                                {
+      #|                                  v: "Quoted bullets",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              trailing_blanks: "",
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2124,15 +2536,89 @@ test "should parse quoted bullets" {
       #|                        ),
       #|                        List(
       #|                          {
-      #|                            v: { ty: Unordered('*'), tight: true, items: Seq(...) },
+      #|                            v: {
+      #|                              ty: Unordered('*'),
+      #|                              tight: true,
+      #|                              items: Seq(
+      #|                                [
+      #|                                  {
+      #|                                    v: {
+      #|                                      before_marker: 0,
+      #|                                      marker: {
+      #|                                        v: "*",
+      #|                                        meta: {
+      #|                                          id: 0,
+      #|                                          loc: {
+      #|                                            file: "-",
+      #|                                            first_ccode: -1,
+      #|                                            last_ccode: -1,
+      #|                                            first_line: LinePos(-1, -1),
+      #|                                            last_line: LinePos(-1, -1),
+      #|                                          },
+      #|                                          extra: None,
+      #|                                        },
+      #|                                      },
+      #|                                      after_marker: 1,
+      #|                                      block: Paragraph(
+      #|                                        {
+      #|                                          v: {
+      #|                                            leading_indent: 0,
+      #|                                            inline: Text(
+      #|                                              {
+      #|                                                v: "Is this important ?",
+      #|                                                meta: {
+      #|                                                  id: 0,
+      #|                                                  loc: {
+      #|                                                    file: "-",
+      #|                                                    first_ccode: -1,
+      #|                                                    last_ccode: -1,
+      #|                                                    first_line: LinePos(-1, -1),
+      #|                                                    last_line: LinePos(-1, -1),
+      #|                                                  },
+      #|                                                  extra: None,
+      #|                                                },
+      #|                                              },
+      #|                                            ),
+      #|                                            trailing_blanks: "",
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      ext_task_marker: None,
+      #|                                    },
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                ],
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2194,15 +2680,34 @@ test "should parse quoted bullets" {
       #|                        after_marker: 1,
       #|                        block: Paragraph(
       #|                          {
-      #|                            v: { leading_indent: 0, inline: Text(...), trailing_blanks: "" },
+      #|                            v: {
+      #|                              leading_indent: 0,
+      #|                              inline: Text(
+      #|                                {
+      #|                                  v: "Well it's in the spec",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              trailing_blanks: "",
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2249,8 +2754,8 @@ test "should parse quoted bullets" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2404,15 +2909,232 @@ test "should parse list item with multiple inlines" {
       #|                      [
       #|                        Paragraph(
       #|                          {
-      #|                            v: { leading_indent: 0, inline: Inlines(...), trailing_blanks: "" },
+      #|                            v: {
+      #|                              leading_indent: 0,
+      #|                              inline: Inlines(
+      #|                                {
+      #|                                  v: Seq(
+      #|                                    [
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: "What is the exact rule for determining when list items get",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Break(
+      #|                                        {
+      #|                                          v: {
+      #|                                            layout_before: {
+      #|                                              v: "",
+      #|                                              meta: {
+      #|                                                id: 0,
+      #|                                                loc: {
+      #|                                                  file: "-",
+      #|                                                  first_ccode: -1,
+      #|                                                  last_ccode: -1,
+      #|                                                  first_line: LinePos(-1, -1),
+      #|                                                  last_line: LinePos(-1, -1),
+      #|                                                },
+      #|                                                extra: None,
+      #|                                              },
+      #|                                            },
+      #|                                            ty: Soft,
+      #|                                            layout_after: {
+      #|                                              v: "",
+      #|                                              meta: {
+      #|                                                id: 0,
+      #|                                                loc: {
+      #|                                                  file: "-",
+      #|                                                  first_ccode: -1,
+      #|                                                  last_ccode: -1,
+      #|                                                  first_line: LinePos(-1, -1),
+      #|                                                  last_line: LinePos(-1, -1),
+      #|                                                },
+      #|                                                extra: None,
+      #|                                              },
+      #|                                            },
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: "wrapped in ",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      CodeSpan(
+      #|                                        {
+      #|                                          v: {
+      #|                                            backticks: 1,
+      #|                                            code_layout: Seq(
+      #|                                              [
+      #|                                                {
+      #|                                                  blanks: "",
+      #|                                                  node: {
+      #|                                                    v: "<p>",
+      #|                                                    meta: {
+      #|                                                      id: 0,
+      #|                                                      loc: {
+      #|                                                        file: "-",
+      #|                                                        first_ccode: -1,
+      #|                                                        last_ccode: -1,
+      #|                                                        first_line: LinePos(-1, -1),
+      #|                                                        last_line: LinePos(-1, -1),
+      #|                                                      },
+      #|                                                      extra: None,
+      #|                                                    },
+      #|                                                  },
+      #|                                                },
+      #|                                              ],
+      #|                                            ),
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: " tags?  Can a list be partially \"loose\" and partially",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Break(
+      #|                                        {
+      #|                                          v: {
+      #|                                            layout_before: {
+      #|                                              v: "",
+      #|                                              meta: {
+      #|                                                id: 0,
+      #|                                                loc: {
+      #|                                                  file: "-",
+      #|                                                  first_ccode: -1,
+      #|                                                  last_ccode: -1,
+      #|                                                  first_line: LinePos(-1, -1),
+      #|                                                  last_line: LinePos(-1, -1),
+      #|                                                },
+      #|                                                extra: None,
+      #|                                              },
+      #|                                            },
+      #|                                            ty: Soft,
+      #|                                            layout_after: {
+      #|                                              v: "",
+      #|                                              meta: {
+      #|                                                id: 0,
+      #|                                                loc: {
+      #|                                                  file: "-",
+      #|                                                  first_ccode: -1,
+      #|                                                  last_ccode: -1,
+      #|                                                  first_line: LinePos(-1, -1),
+      #|                                                  last_line: LinePos(-1, -1),
+      #|                                                },
+      #|                                                extra: None,
+      #|                                              },
+      #|                                            },
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: "\"tight\"?  What should we do with a list like this?",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                    ],
+      #|                                  ),
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              trailing_blanks: "",
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2427,8 +3149,8 @@ test "should parse list item with multiple inlines" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2436,15 +3158,127 @@ test "should parse list item with multiple inlines" {
       #|                        ),
       #|                        CodeBlock(
       #|                          {
-      #|                            v: { layout: Fenced(...), info_string: Some(...), code: Seq(...) },
+      #|                            v: {
+      #|                              layout: Fenced(
+      #|                                {
+      #|                                  indent: 0,
+      #|                                  opening_fence: {
+      #|                                    v: "",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  closing_fence: Some(
+      #|                                    {
+      #|                                      v: "",
+      #|                                      meta: {
+      #|                                        id: 0,
+      #|                                        loc: {
+      #|                                          file: "-",
+      #|                                          first_ccode: -1,
+      #|                                          last_ccode: -1,
+      #|                                          first_line: LinePos(-1, -1),
+      #|                                          last_line: LinePos(-1, -1),
+      #|                                        },
+      #|                                        extra: None,
+      #|                                      },
+      #|                                    },
+      #|                                  ),
+      #|                                },
+      #|                              ),
+      #|                              info_string: Some(
+      #|                                {
+      #|                                  v: "markdown",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              code: Seq(
+      #|                                [
+      #|                                  {
+      #|                                    v: "1. one",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "2. two",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "3. three",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                ],
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2459,8 +3293,8 @@ test "should parse list item with multiple inlines" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2468,15 +3302,34 @@ test "should parse list item with multiple inlines" {
       #|                        ),
       #|                        Paragraph(
       #|                          {
-      #|                            v: { leading_indent: 0, inline: Text(...), trailing_blanks: "" },
+      #|                            v: {
+      #|                              leading_indent: 0,
+      #|                              inline: Text(
+      #|                                {
+      #|                                  v: "Or this?",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              trailing_blanks: "",
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2491,8 +3344,8 @@ test "should parse list item with multiple inlines" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2500,15 +3353,141 @@ test "should parse list item with multiple inlines" {
       #|                        ),
       #|                        CodeBlock(
       #|                          {
-      #|                            v: { layout: Fenced(...), info_string: Some(...), code: Seq(...) },
+      #|                            v: {
+      #|                              layout: Fenced(
+      #|                                {
+      #|                                  indent: 0,
+      #|                                  opening_fence: {
+      #|                                    v: "",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  closing_fence: Some(
+      #|                                    {
+      #|                                      v: "",
+      #|                                      meta: {
+      #|                                        id: 0,
+      #|                                        loc: {
+      #|                                          file: "-",
+      #|                                          first_ccode: -1,
+      #|                                          last_ccode: -1,
+      #|                                          first_line: LinePos(-1, -1),
+      #|                                          last_line: LinePos(-1, -1),
+      #|                                        },
+      #|                                        extra: None,
+      #|                                      },
+      #|                                    },
+      #|                                  ),
+      #|                                },
+      #|                              ),
+      #|                              info_string: Some(
+      #|                                {
+      #|                                  v: "markdown",
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              code: Seq(
+      #|                                [
+      #|                                  {
+      #|                                    v: "1.  one",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "    - a",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "    - b",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                  {
+      #|                                    v: "2.  two",
+      #|                                    meta: {
+      #|                                      id: 0,
+      #|                                      loc: {
+      #|                                        file: "-",
+      #|                                        first_ccode: -1,
+      #|                                        last_ccode: -1,
+      #|                                        first_line: LinePos(-1, -1),
+      #|                                        last_line: LinePos(-1, -1),
+      #|                                      },
+      #|                                      extra: None,
+      #|                                    },
+      #|                                  },
+      #|                                ],
+      #|                              ),
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2523,8 +3502,8 @@ test "should parse list item with multiple inlines" {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },
@@ -2532,15 +3511,192 @@ test "should parse list item with multiple inlines" {
       #|                        ),
       #|                        Paragraph(
       #|                          {
-      #|                            v: { leading_indent: 0, inline: Inlines(...), trailing_blanks: "" },
+      #|                            v: {
+      #|                              leading_indent: 0,
+      #|                              inline: Inlines(
+      #|                                {
+      #|                                  v: Seq(
+      #|                                    [
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: "(There are some relevant comments by John Gruber",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Break(
+      #|                                        {
+      #|                                          v: {
+      #|                                            layout_before: {
+      #|                                              v: "",
+      #|                                              meta: {
+      #|                                                id: 0,
+      #|                                                loc: {
+      #|                                                  file: "-",
+      #|                                                  first_ccode: -1,
+      #|                                                  last_ccode: -1,
+      #|                                                  first_line: LinePos(-1, -1),
+      #|                                                  last_line: LinePos(-1, -1),
+      #|                                                },
+      #|                                                extra: None,
+      #|                                              },
+      #|                                            },
+      #|                                            ty: Soft,
+      #|                                            layout_after: {
+      #|                                              v: "",
+      #|                                              meta: {
+      #|                                                id: 0,
+      #|                                                loc: {
+      #|                                                  file: "-",
+      #|                                                  first_ccode: -1,
+      #|                                                  last_ccode: -1,
+      #|                                                  first_line: LinePos(-1, -1),
+      #|                                                  last_line: LinePos(-1, -1),
+      #|                                                },
+      #|                                                extra: None,
+      #|                                              },
+      #|                                            },
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Link(
+      #|                                        {
+      #|                                          v: {
+      #|                                            text: Text(
+      #|                                              {
+      #|                                                v: "here",
+      #|                                                meta: {
+      #|                                                  id: 0,
+      #|                                                  loc: {
+      #|                                                    file: "-",
+      #|                                                    first_ccode: -1,
+      #|                                                    last_ccode: -1,
+      #|                                                    first_line: LinePos(-1, -1),
+      #|                                                    last_line: LinePos(-1, -1),
+      #|                                                  },
+      #|                                                  extra: None,
+      #|                                                },
+      #|                                              },
+      #|                                            ),
+      #|                                            reference: Inline(
+      #|                                              {
+      #|                                                v: {
+      #|                                                  layout: {
+      #|                                                    indent: 0,
+      #|                                                    angled_dest: false,
+      #|                                                    before_dest: Seq([]),
+      #|                                                    after_dest: Seq([]),
+      #|                                                    title_open_delim: '"',
+      #|                                                    after_title: Seq([]),
+      #|                                                  },
+      #|                                                  label: None,
+      #|                                                  defined_label: None,
+      #|                                                  dest: Some(
+      #|                                                    {
+      #|                                                      v: "https://web.archive.org/web/20170611172104/http://article.gmane.org/gmane.text.markdown.general/2554",
+      #|                                                      meta: {
+      #|                                                        id: 0,
+      #|                                                        loc: {
+      #|                                                          file: "-",
+      #|                                                          first_ccode: -1,
+      #|                                                          last_ccode: -1,
+      #|                                                          first_line: LinePos(-1, -1),
+      #|                                                          last_line: LinePos(-1, -1),
+      #|                                                        },
+      #|                                                        extra: None,
+      #|                                                      },
+      #|                                                    },
+      #|                                                  ),
+      #|                                                  title: None,
+      #|                                                },
+      #|                                                meta: {
+      #|                                                  id: 0,
+      #|                                                  loc: {
+      #|                                                    file: "-",
+      #|                                                    first_ccode: -1,
+      #|                                                    last_ccode: -1,
+      #|                                                    first_line: LinePos(-1, -1),
+      #|                                                    last_line: LinePos(-1, -1),
+      #|                                                  },
+      #|                                                  extra: None,
+      #|                                                },
+      #|                                              },
+      #|                                            ),
+      #|                                          },
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                      Text(
+      #|                                        {
+      #|                                          v: ".)",
+      #|                                          meta: {
+      #|                                            id: 0,
+      #|                                            loc: {
+      #|                                              file: "-",
+      #|                                              first_ccode: -1,
+      #|                                              last_ccode: -1,
+      #|                                              first_line: LinePos(-1, -1),
+      #|                                              last_line: LinePos(-1, -1),
+      #|                                            },
+      #|                                            extra: None,
+      #|                                          },
+      #|                                        },
+      #|                                      ),
+      #|                                    ],
+      #|                                  ),
+      #|                                  meta: {
+      #|                                    id: 0,
+      #|                                    loc: {
+      #|                                      file: "-",
+      #|                                      first_ccode: -1,
+      #|                                      last_ccode: -1,
+      #|                                      first_line: LinePos(-1, -1),
+      #|                                      last_line: LinePos(-1, -1),
+      #|                                    },
+      #|                                    extra: None,
+      #|                                  },
+      #|                                },
+      #|                              ),
+      #|                              trailing_blanks: "",
+      #|                            },
       #|                            meta: {
       #|                              id: 0,
       #|                              loc: {
       #|                                file: "-",
       #|                                first_ccode: -1,
       #|                                last_ccode: -1,
-      #|                                first_line: ...,
-      #|                                last_line: ...,
+      #|                                first_line: LinePos(-1, -1),
+      #|                                last_line: LinePos(-1, -1),
       #|                              },
       #|                              extra: None,
       #|                            },

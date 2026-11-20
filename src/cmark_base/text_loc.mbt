@@ -1,11 +1,12 @@
 ///|
+#derive(Eq, Compare, Debug, FromJson, ToJson)
 pub(all) struct TextLoc {
   file : FilePath
   first_ccode : CharCodePos
   last_ccode : CharCodePos
   first_line : LinePos
   last_line : LinePos
-} derive(Eq, Compare, Debug, FromJson, ToJson)
+}
 
 ///|
 let text_loc_none : TextLoc = {
@@ -95,36 +96,34 @@ pub type LineNum = Int32 // 1-based
 pub let line_num_none = -1
 
 ///|
-pub(all) struct LinePos(LineNum, CharCodePos) derive (
-  Debug,
-  Eq,
-  Compare,
-  FromJson,
-  ToJson,
-)
+#derive(Debug, Eq, Compare, FromJson, ToJson)
+pub(all) struct LinePos(LineNum, CharCodePos)
 
 ///|
 pub let line_pos_none : LinePos = LinePos(line_num_none, char_code_pos_none)
 
 ///|
+#derive(Debug, Eq, Compare)
 pub(all) struct LineSpan {
   pos : LinePos
   first : CharCodePos
   last : CharCodePos
-} derive(Debug, Eq, Compare)
+}
 
 ///|
 ///  A line span with the byte position on where the line starts (inside a CommonMark container).  The [line_start] is the start of line in the container, the [line_span] has the actual data. The characters in the \[[line_start];[line_span.first - 1]\] are blanks.
+#derive(Debug, Eq, Compare)
 pub(all) struct Span {
   start : CharCodePos
   span : LineSpan
-} derive(Debug, Eq, Compare)
+}
 
 ///|
 pub(all) struct NextLineFn[A]((A) -> LineSpan?)
 
 ///|
+#derive(Debug)
 pub(all) enum NextLineResult {
   ThisLine(CharCodePos)
   NextLine(LineSpan, CharCodePos)
-} derive(Debug)
+}

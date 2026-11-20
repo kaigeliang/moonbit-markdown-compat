@@ -2,20 +2,22 @@
 // The matching functions assume the indentation has been stripped.
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum HtmlBlockEndCond {
   EndStr(String)
   EndCond1
   EndBlank
   EndBlank7
-} derive(Debug, Eq)
+}
 
 ///|
+#derive(Debug, FromJson, ToJson, Eq)
 pub(all) enum ListType {
   /// With the given marker.
   Unordered(Char)
   /// Starting at given integer, markers ending with given character, i.e. ')' or '.'.
   Ordered(Int32, Char)
-} derive(Debug, FromJson, ToJson, Eq)
+}
 
 ///|
 pub fn ListType::is_same_type(self : ListType, other : ListType) -> Bool {
@@ -25,6 +27,7 @@ pub fn ListType::is_same_type(self : ListType, other : ListType) -> Bool {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum LineType {
   AtxHeadingLine(HeadingLevel, CharCodePos, First, Last)
   BlankLine
@@ -39,7 +42,7 @@ pub(all) enum LineType {
   ExtTableRow(Last)
   ExtFootnoteLabel(Array[Span], Last, String)
   Nomatch
-} derive(Debug, Eq)
+}
 
 ///|
 /// https://spec.commonmark.org/current/#thematic-breaks
@@ -234,10 +237,11 @@ pub fn LineType::fenced_code_block_start(
 }
 
 ///|
+#derive(Debug)
 pub(all) enum FencedCodeBlockContinue {
   Close(First, Last)
   Code
-} derive(Debug)
+}
 
 ///|
 /// `fenced_code_block_continue(fence, s, last, start)` indicates

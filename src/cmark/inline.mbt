@@ -2,6 +2,7 @@
 // NOTE: Document data in inline nodes is always stored unescaped and with entity and character references resolved.
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum Inline {
   Autolink(Node[InlineAutolink])
   Break(Node[InlineBreak])
@@ -15,7 +16,7 @@ pub(all) enum Inline {
   Text(Node[InlineText])
   ExtStrikethrough(Node[InlineStrikethrough])
   ExtMathSpan(Node[InlineMathSpan])
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn Inline::empty() -> Inline {
@@ -210,13 +211,14 @@ pub fn Inline::id(
 }
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct InlineAutolink {
   /// https://spec.commonmark.org/0.30/#email-address
   is_email : Bool
   /// https://spec.commonmark.org/0.30/#absolute-uri
   /// https://spec.commonmark.org/0.30/#email-address
   link : StringNode
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn InlineAutolink::new(link : StringNode) -> InlineAutolink {
@@ -225,11 +227,12 @@ pub fn InlineAutolink::new(link : StringNode) -> InlineAutolink {
 }
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct InlineBreak {
   layout_before : BlanksNode
   ty : InlineBreakType
   layout_after : BlanksNode
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn InlineBreak::new(
@@ -241,17 +244,19 @@ pub fn InlineBreak::new(
 }
 
 ///|
+#derive(Eq, Compare, Debug, FromJson, ToJson)
 pub(all) enum InlineBreakType {
   Hard
   Soft
-} derive(Eq, Compare, Debug, FromJson, ToJson)
+}
 
 ///|
 /// The type for [code spans](https://spec.commonmark.org/0.30/#code-spans).
+#derive(Eq, Debug)
 pub(all) struct InlineCodeSpan {
   backticks : Count
   code_layout : Seq[Tight]
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn InlineCodeSpan::new(
@@ -340,10 +345,11 @@ pub fn InlineCodeSpan::code(self : InlineCodeSpan) -> String {
 ///|
 /// The type for emphasis and strong emphasis.
 /// https://spec.commonmark.org/0.30/#emphasis-and-strong-emphasis
+#derive(Eq, Debug)
 pub(all) struct InlineEmphasis {
   delim : Char
   inline : Inline
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn InlineEmphasis::new(
@@ -354,22 +360,25 @@ pub fn InlineEmphasis::new(
 }
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct InlineLink {
   text : Inline
   reference : ReferenceKind
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum ReferenceKind {
   /// https://spec.commonmark.org/0.30/#inline-link
   Inline(Node[LinkDefinition])
   /// https://spec.commonmark.org/0.30/#reference-link
   /// First label is the label of the reference, second label is the label of the referenced definition.
   Ref(ReferenceLayout, Label, Label)
-} derive(Eq, Debug)
+}
 
 ///|
 /// The type for reference link layouts.
+#derive(Eq, Debug, FromJson, ToJson)
 pub(all) enum ReferenceLayout {
   /// https://spec.commonmark.org/0.30/#collapsed-reference-link
   Collapsed
@@ -377,7 +386,7 @@ pub(all) enum ReferenceLayout {
   Full
   /// https://spec.commonmark.org/0.30/#shortcut-reference-link
   Shortcut
-} derive(Eq, Debug, FromJson, ToJson)
+}
 
 ///|
 pub fn InlineLink::new(text : Inline, reference : ReferenceKind) -> InlineLink {
@@ -441,7 +450,8 @@ pub fn InlineLink::is_unsafe(l : String) -> Bool {
 
 ///|
 /// The type for [inline raw HTML](https://spec.commonmark.org/0.30/#raw-html) (can span multiple lines).
-pub(all) struct InlineRawHtml(Seq[Tight]) derive(Eq, Debug)
+#derive(Eq, Debug)
+pub(all) struct InlineRawHtml(Seq[Tight])
 
 ///|
 /// The type for [textual content](https://spec.commonmark.org/0.30/#textual-content).
@@ -454,13 +464,15 @@ pub type InlineText = String
 // Extensions
 
 ///|
-pub(all) struct InlineStrikethrough(Inline) derive(Eq, Debug)
+#derive(Eq, Debug)
+pub(all) struct InlineStrikethrough(Inline)
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct InlineMathSpan {
   display : Bool
   tex_layout : Seq[Tight]
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn InlineMathSpan::tex(self : Self) -> String {
