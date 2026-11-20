@@ -1,7 +1,8 @@
 ///|
+#derive(Debug)
 pub(all) suberror FolderError {
   FolderError(String)
-} derive(Debug)
+}
 
 ///|
 pub impl Show for FolderError with fn output(self, logger) {
@@ -15,9 +16,10 @@ pub impl Show for FolderError with fn output(self, logger) {
 }
 
 ///|
+#derive(Debug)
 pub(all) suberror MapperError {
   MapperError(String)
-} derive(Debug)
+}
 
 ///|
 pub impl Show for MapperError with fn output(self, logger) {

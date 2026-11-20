@@ -4,6 +4,7 @@
 /// They map closing delimiters to the position where they
 /// start. Shortcuts forward searches in inline parsing. See
 /// `inline_struct`
+#derive(Eq, Hash, Debug)
 priv enum Closer {
   /// Run length of backticks.
   Backticks(Int32)
@@ -12,13 +13,14 @@ priv enum Closer {
   EmphasisMarks(Char)
   StrikethroughMarks
   MathSpanMarks(Int32)
-} derive(Eq, Hash, Debug)
+}
 
 ///|
 type Positions = Array[Int32]
 
 ///|
-priv struct CloserIndex(Map[Closer, Positions]) derive(Debug)
+#derive(Debug)
+priv struct CloserIndex(Map[Closer, Positions])
 
 ///|
 test {

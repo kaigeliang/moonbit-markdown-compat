@@ -1,5 +1,6 @@
 ///|
 /// A markdown block.
+#derive(Debug)
 pub(all) enum Block {
   BlankLine(Node[BlockBlankLine])
   BlockQuote(Node[BlockQuote])
@@ -14,7 +15,7 @@ pub(all) enum Block {
   ExtMathBlock(Node[CodeBlock])
   ExtTable(Node[Table])
   ExtFootnoteDefinition(Node[Footnote])
-} derive(Debug)
+}
 
 ///|
 pub fn Block::empty() -> Block {
@@ -102,12 +103,13 @@ pub type BlockBlankLine = Blanks
 
 ///|
 /// The type for [block quotes](https://spec.commonmark.org/0.30/#block-quotes).
+#derive(Debug)
 pub(all) struct BlockQuote {
   /// The indentation to the block quote marker found on the first line.
   indent : Indent
   /// The quoted block.
   block : Block
-} derive(Debug)
+}
 
 ///|
 pub fn BlockQuote::new(indent~ : Int32 = 0, block : Block) -> BlockQuote {
@@ -130,24 +132,27 @@ pub fn BlockQuote::normalize_block(self : BlockQuote) -> BlockQuote {
 ///|
 /// The type for [indented](https://spec.commonmark.org/0.30/#indented-code-block) and
 /// [fenced](:https://spec.commonmark.org/0.30/#fenced-code-blocks) code blocks.
+#derive(Debug)
 pub(all) struct CodeBlock {
   layout : CodeBlockLayout
   info_string : StringNode?
   code : Seq[StringNode]
-} derive(Debug)
+}
 
 ///|
+#derive(Debug)
 pub(all) enum CodeBlockLayout {
   Indented
   Fenced(CodeBlockFencedLayout)
-} derive(Debug)
+}
 
 ///|
+#derive(Debug)
 pub(all) struct CodeBlockFencedLayout {
   indent : Indent
   opening_fence : StringNode
   closing_fence : StringNode?
-} derive(Debug)
+}
 
 ///|
 pub fn CodeBlockFencedLayout::default() -> CodeBlockFencedLayout {
@@ -220,25 +225,28 @@ fn CodeBlock::is_math_block(s : String?) -> Bool {
 ///|
 /// The type for [ATX](https://spec.commonmark.org/0.30/#atx-headings) 
 /// and [Setext](https://spec.commonmark.org/0.30/#setext-headings) headings.
+#derive(Debug)
 pub(all) struct BlockHeading {
   layout : BlockHeadingLayout
   level : Int32
   inline : Inline
   id : BlockHeadingId?
-} derive(Debug)
+}
 
 ///|
+#derive(Debug)
 pub(all) enum BlockHeadingLayout {
   Atx(BlockHeadingAtxLayout)
   Setext(BlockHeadingSetextLayout)
-} derive(Debug)
+}
 
 ///|
+#derive(Debug, FromJson, ToJson)
 pub(all) struct BlockHeadingAtxLayout {
   indent : Indent
   after_opening : Blanks
   closing : String
-} derive(Debug, FromJson, ToJson)
+}
 
 ///|
 pub fn BlockHeadingAtxLayout::default() -> BlockHeadingAtxLayout {
@@ -246,19 +254,21 @@ pub fn BlockHeadingAtxLayout::default() -> BlockHeadingAtxLayout {
 }
 
 ///|
+#derive(Debug)
 pub(all) struct BlockHeadingSetextLayout {
   leading_indent : Indent
   trailing_blanks : Blanks
   underline_indent : Indent
   underline_count : Node[Count]
   underline_blanks : Blanks
-} derive(Debug)
+}
 
 ///|
+#derive(Debug, FromJson, ToJson)
 pub(all) enum BlockHeadingId {
   Auto(String)
   Id(String)
-} derive(Debug, FromJson, ToJson)
+}
 
 ///|
 pub fn BlockHeading::new(
@@ -272,16 +282,18 @@ pub fn BlockHeading::new(
 
 ///|
 /// The type for [HTML blocks](https://spec.commonmark.org/0.30/#html-blocks).
-pub(all) struct HtmlBlock(Seq[StringNode]) derive(Debug)
+#derive(Debug)
+pub(all) struct HtmlBlock(Seq[StringNode])
 
 ///|
+#derive(Debug)
 pub(all) struct ListItem {
   before_marker : Indent
   marker : StringNode
   after_marker : Indent
   block : Block
   ext_task_marker : Node[Char]?
-} derive(Debug)
+}
 
 ///|
 pub type ListItemBlock = ListItem
@@ -327,11 +339,12 @@ pub fn ListTaskStatus::from_marker(marker : Char) -> ListTaskStatus {
 
 ///|
 /// The type for [lists](https://spec.commonmark.org/0.30/#lists).
+#derive(Debug)
 pub(all) struct BlockList {
   ty : ListType
   tight : Bool
   items : Seq[Node[ListItem]]
-} derive(Debug)
+}
 
 ///|
 pub fn BlockList::map_items(
@@ -348,11 +361,12 @@ pub fn BlockList::normalize_items(self : BlockList) -> BlockList {
 
 ///|
 /// The type for [paragraphs](https://spec.commonmark.org/0.30/#paragraphs).
+#derive(Debug)
 pub(all) struct BlockParagraph {
   leading_indent : Indent
   inline : Inline
   trailing_blanks : Blanks
-} derive(Debug)
+}
 
 ///|
 pub fn BlockParagraph::new(
@@ -365,10 +379,11 @@ pub fn BlockParagraph::new(
 
 ///|
 /// The type for [thematic breaks](https://spec.commonmark.org/0.30/#thematic-break).
+#derive(Debug, FromJson, ToJson)
 pub(all) struct BlockThematicBreak {
   indent : Indent
   layout : String
-} derive(Debug, FromJson, ToJson)
+}
 
 ///|
 pub fn BlockThematicBreak::new(
@@ -381,12 +396,13 @@ pub fn BlockThematicBreak::new(
 // Extensions
 
 ///|
+#derive(Debug)
 pub(all) struct Footnote {
   indent : Indent
   label : Label
   defined_label : Label?
   block : Block
-} derive(Debug)
+}
 
 ///|
 pub fn Footnote::new(
@@ -417,31 +433,36 @@ fn Label::stub(label : Label, defined_label : Label?) -> LabelDef {
 }
 
 ///|
+#derive(Debug)
 pub(all) struct Table {
   indent : Indent
   col_count : Count
   rows : Seq[(Node[TableRow], Blanks)]
-} derive(Debug)
+}
 
 ///|
+#derive(Debug, FromJson, ToJson)
 pub(all) enum TableAlign {
   Left
   Center
   Right
-} derive(Debug, FromJson, ToJson)
+}
 
 ///|
+#derive(Debug)
 pub(all) enum TableRow {
   Header(Seq[(Inline, TableCellLayout)])
   Sep(Seq[Node[TableSep]])
   Data(Seq[(Inline, TableCellLayout)])
-} derive(Debug)
+}
 
 ///|
-pub(all) struct TableSep((TableAlign?, Count)) derive(Debug)
+#derive(Debug)
+pub(all) struct TableSep((TableAlign?, Count))
 
 ///|
-pub(all) struct TableCellLayout((Blanks, Blanks)) derive(Debug, Eq, Compare)
+#derive(Debug, Eq, Compare)
+pub(all) struct TableCellLayout((Blanks, Blanks))
 
 ///|
 pub fn Table::new(
